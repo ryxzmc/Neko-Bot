@@ -6,17 +6,17 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 
 /*
-	* Create By Naze
-	* Follow https://github.com/nazedev
-	* Whatsapp : https://whatsapp.com/channel/0029VaWOkNm7DAWtkvkJBK43
+	* Create By Ryxz
+	* Follow https://github.com/ryxzmc
+	* 
 */
 
 //~~~~~~~~~~~~< GLOBAL SETTINGS >~~~~~~~~~~~~\\
 
-global.owner = ["6282113821188"] // ['628','628'] 2 owner atau lebih
-global.author = 'Nazedev'
-global.botname = 'Hitori Bot'
-global.packname = 'Bot WhatsApp'
+global.owner = ["62xxxxxxx"] // ['628','628'] 2 owner atau lebih
+global.author = 'ryxzmc'
+global.botname = 'Neko-Bot'
+global.packname = 'Bot_Wa'
 global.timezone = 'Asia/Jakarta' // Ganti pakai command .settimezone
 global.locale = 'en' // Ganti pakai command .setlocale
 global.listprefix = ["+","!","."]
@@ -37,10 +37,10 @@ global.fake = {
 }
 
 global.my = {
-	yt: "https://youtube.com/c/Nazedev",
-	gh: "https://github.com/nazedev",
-	gc: "https://chat.whatsapp.com/EqMTCcxdCZgHUJNl5KooCr",
-	ch: "120363250409960161@newsletter"
+	yt: "https://",
+	gh: "https://",
+	gc: "https://",
+	ch: ""
 }
 
 global.limit = {
