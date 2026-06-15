@@ -319,8 +319,8 @@ export async function participantsUpdate({ id, participants, action, simulate = 
 
 				let text = (
 					action === 'add'
-						? chat.sWelcome || this.welcome || 'Welcome, @user!'
-						: chat.sBye || this.bye || 'Bye, @user!'
+						? chat.sWelcome || this.welcome || 'Welcome to my grup✨, @user!'
+						: chat.sBye || this.bye || 'Hama gc telah keluar, @user!'
 				)
 				.replace('@user', '@' + user.split('@')[0])
 				.replace('@subject', this.getName(id))
@@ -352,8 +352,8 @@ export async function participantsUpdate({ id, participants, action, simulate = 
 
 				let text = (
 					action === 'promote'
-						? chat.sPromote || '@user sekarang admin'
-						: chat.sDemote || '@user bukan admin lagi'
+						? chat.sPromote || '@user beliau telah menjadi admin🥳'
+						: chat.sDemote || '@user beliau bukan admin lagi😪'
 				)
 				.replace('@user', '@' + user.split('@')[0]);
 
@@ -373,10 +373,10 @@ export async function groupsUpdate(groupsUpdate) {
 		if (!id) continue;
 		let chats = global.db.data.chats[id], text = '';
 		if (!chats?.detect) continue;
-		if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '```Description has been changed to```\n@desc').replace('@desc', groupUpdate.desc);
-		if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '```Subject has been changed to```\n@subject').replace('@subject', groupUpdate.subject);
-		if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```Icon has been changed to```').replace('@icon', groupUpdate.icon);
-		if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```Group link has been changed to```\n@revoke').replace('@revoke', groupUpdate.revoke);
+		if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '```Deskripsi telah diubah menjadi```\n@desc').replace('@desc', groupUpdate.desc);
+		if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '```Subjek telah diubah menjadi```\n@subject').replace('@subject', groupUpdate.subject);
+		if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```Ikon telah diubah menjadi```').replace('@icon', groupUpdate.icon);
+		if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```Tautan grup telah diubah menjadi```\n@revoke').replace('@revoke', groupUpdate.revoke);
 		if (!text) continue;
 		await this.sendMessage(id, { text, mentions: this.parseMention(text) });
 	}
@@ -392,7 +392,7 @@ export async function deleteUpdate(message) {
 		if (!chat.delete) return;
 		await this.reply(
 			msg.chat,
-			`Terdeteksi @${participant.split`@`[0]} telah menghapus pesan\nUntuk mematikan fitur ini, ketik\n*.enable delete*`.trim(),
+			`Detected⚠️ @${participant.split`@`[0]} telah menghapus pesan\nUntuk mematikan fitur ini, ketik\n*.enable delete*`.trim(),
 			msg,
 			{ mentions: [participant] }
 		);
@@ -406,11 +406,11 @@ global.dfail = (type, m, conn) => {
 	let msg = {
 		rowner: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: `Ara~ command ini hanya untuk developer bot`,
+				text: `Ara~ command ini hanya untuk owner bot`,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
-						body: 'Akses dibatasi',
+						title: 'Neko-Bot',
+						body: 'Akses terbatas',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
 						renderLargerThumbnail: true,
@@ -421,10 +421,10 @@ global.dfail = (type, m, conn) => {
 		},
 		owner: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: ` fitur ini khusus ownerku `,
+				text: ` fitur ini khusus owner `,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
+						title: 'Neko-Bot',
 						body: 'Akses dibatasi',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
@@ -436,10 +436,10 @@ global.dfail = (type, m, conn) => {
 		},
 		mods: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: ` hanya moderator yang boleh pakai fitur ini`,
+				text: ` hanya moderator yang boleh memakai fitur ini`,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
+						title: 'Neko-Bot',
 						body: 'Akses dibatasi',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
@@ -451,10 +451,10 @@ global.dfail = (type, m, conn) => {
 		},
 		premium: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: `Ups bro fitur ini khusus pengguna premium`,
+				text: `Duhhh🙊, fitur ini hanya untuk pengguna premium`,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
+						title: 'Neko-Bot',
 						body: 'Akses dibatasi',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
@@ -466,10 +466,10 @@ global.dfail = (type, m, conn) => {
 		},
 		group: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: `🌸 Maaf yaa~ fitur ini khusus untuk grup 😊`,
+				text: `Maaf yaa🙏😅~ fitur ini khusus untuk grup 😊`,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
+						title: 'Neko-Bot',
 						body: 'Akses dibatasi',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
@@ -481,10 +481,10 @@ global.dfail = (type, m, conn) => {
 		},
 		private: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: `Nee~ command ini hanya bisa dipakai di chat pribadi`,
+				text: `Minna-san☺️~ command ini hanya bisa dipakai di chat pribadi`,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
+						title: 'Neko-Bot',
 						body: 'Akses dibatasi',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
@@ -496,10 +496,10 @@ global.dfail = (type, m, conn) => {
 		},
 		admin: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: `⌯˃ ᵕ ˂⌯ಣ Hehe~ cuma admin grup yang punya izin memakai fitur ini 💕`,
+				text: `Hehe~ cuman admin grup yang punya izin memakai fitur ini 🤗`,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
+						title: 'Neko-Bot',
 						body: 'Akses dibatasi',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
@@ -511,10 +511,10 @@ global.dfail = (type, m, conn) => {
 		},
 		botAdmin: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: `Eits~ fitur ini butuh akses admin 😖\nCoba angkat aku jadi admin dulu ya sayang 💕`,
+				text: `Upsss~ fitur ini butuh akses admin 😖\nCoba angkat aku jadi admin dulu ya sayang 🥰`,
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
+						title: 'Neko-Bot',
 						body: 'Akses dibatasi',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
@@ -526,7 +526,7 @@ global.dfail = (type, m, conn) => {
 		},
 		unreg: (m, conn) => {
 			return conn.sendMessage(m.chat, {
-				text: `૮₍ ˃ ⤙ ˂ ₎ა Duhh sayang belum terdaftar nihh~ 💕\nYuk daftar dulu lewat tombol di bawah supaya semua fitur kebuka ✨`,
+				text: `sayang kamu belum terdaftar nihh~ 🥹\nYuk daftar dulu lewat tombol di bawah supaya semua fitur kebuka✨`,
 				buttons: [
 					{
 						buttonId: `.daftar`,
@@ -534,11 +534,11 @@ global.dfail = (type, m, conn) => {
 						type: 1
 					}
 				],
-				footer: 'CHII-MD • Quick Register',
+				footer: 'Neko-Bot • Quick Register',
 				contextInfo: {
 					externalAdReply: {
-						title: 'CHII-MD',
-						body: 'Silakan daftar terlebih dahulu',
+						title: 'Neko-Bot',
+						body: 'Silahkan daftar terlebih dahulu',
 						thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 						mediaType: 1,
 						renderLargerThumbnail: true,
