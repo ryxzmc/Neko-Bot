@@ -2,15 +2,15 @@ import { watchFile, unwatchFile } from 'fs';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
-global.pairingNumber = 6285150165293;
-global.owner = [['6283847852067', 'KEYZEN', true]];
+global.pairingNumber = 62;
+global.owner = [['62', 'Ryxz', true]];
 global.mods = [];
 
-global.namebot = 'CHII-MD ~ BY keyzen';
-global.author = 'KEYZEN';
+global.namebot = 'Neko-Bot || By Ryxz';
+global.author = 'Ryxz';
 
-global.wait = '✨ _sabarr ngap_';
-global.eror = '❌ yahh.. eror kak😟..';
+global.wait = 'tunggu bentar minna-san😁';
+global.eror = '❌ yahh.. error nih kak🥲..';
 
 global.pakasir = {
 	slug: 'hilman',
@@ -25,9 +25,9 @@ global.multiplier = 38;
 
 /*============== PANEL ==============*/
 global.panel = {
-  domain: "https://bokepytta.com",
-  ptla: "ptla_xxxxxxxxx",
-  ptlc: "ptlc_xxxxxxxxx",
+  domain: ""
+  ptla: ""
+  ptlc: ""
   egg: 15,
   loc: 1
 };
