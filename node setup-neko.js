@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 const structure = {
-  'package.json': '{"name":"neko-bot","version":"2.1.0","type":"module","main":"index.js","scripts":{"start":"node index.js"},"dependencies":{"@whiskeysockets/baileys":"^6.7.15","lowdb":"^7.0.1","node-fetch":"^3.3.2","openai":"^4.47.1","pino":"^9.3.2","chalk":"^5.3.0","axios":"^1.7.2","cheerio":"^1.0.0-rc.12"}}',
+  'package.json': '{"name":"Neko-bot","version":"2.1.0","type":"module","main":"index.js","scripts":{"start":"node index.js"},"dependencies":{"@whiskeysockets/baileys":"^6.7.15","lowdb":"^7.0.1","node-fetch":"^3.3.2","openai":"^4.47.1","pino":"^9.3.2","chalk":"^5.3.0","axios":"^1.7.2","cheerio":"^1.0.0-rc.12"}}',
   
   '.env.example': 'PREFIX=.\nOWNER=628xxx@s.whatsapp.net\nOPENAI_KEY=sk-xxx\nDEEPSEEK_KEY=sk-xxx',
   
@@ -81,7 +81,7 @@ export async function messageHandler(sock, m, commands, db, prefix) {
   try { await cmd.run(sock, m, args, { db, commands, prefix }); if(cmd.limit) user.limit--; await addExp(m.sender); db.data.stats.cmd++; await db.write() } catch(e) { console.log(e); m.reply('Error: ' + e.message) }
 }`,
   
-  'README.md': '# Neko-Bot 🐱\nBot WhatsApp full fitur Baileys + AI\n## Install\nnpm i\ncp .env.example .env\nnano .env\nnode index.js\n## Fitur\nAI Chat, AI Image, Games, Downloader, Anti, Owner tools, Broadcast\n\n## Owner Command\n.ban .unban .broadcast .bcgc .bcuser .ceklimit',
+  'README.md': '# Neko-Bot 🐱\nBot full fitur Baileys + AI\n## Install\nnpm i\ncp .env.example .env\nnano .env\nnode index.js\n## Fitur\nAI Chat, AI Image, Games, Downloader, Anti, Owner tools, Broadcast\n\n## Owner Command\n.ban .unban .broadcast .bcgc .bcuser .ceklimit',
   
   'Dockerfile': 'FROM node:18-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\nCMD ["node", "index.js"]',
   
@@ -94,4 +94,4 @@ for(let [filePath, content] of Object.entries(structure)) {
   fs.writeFileSync(filePath, content)
   console.log('Created:', filePath)
 }
-console.log('\n✅ Neko-Bot folder jadi! Sekarang copas 27 file command ke src/commands/')
+console.log('\n✅ Neko-Bot sudah jadi nih)
