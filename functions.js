@@ -47,7 +47,7 @@ export async function runAnimation(name, nameProyect, author, description) {
             setTimeout(() => {
                 console.log(chalk.blueBright(lastFrame.join('\n')))
                 console.log('✅ㅤMemulai...')
-                say(`${nameProyect}\nWhatsApp - Bots`, {
+                say(`${nameProyect}\nNeko-Bots`, {
                     font: 'chrome',
                     align: 'center',
                     gradient: ['red', 'magenta']
@@ -148,12 +148,12 @@ export async function terminalQuestion(conn) {
 
 async function enterCode(conn, registration) {
     try {
-        const code = await question('Masukkan kode verifikasi:\n');
+        const code = await question('Masukkan kode verifikasi anda:\n');
         const response = await conn.register(code.replace(/["']/g, '').trim().toLowerCase());
-        console.log('Berhasil mendaftarkan nomor telepon Anda.');
+        console.log('Berhasil mendaftarkan nomor telepon Anda✅.');
         console.log(response);
     } catch (error) {
-        console.error('Gagal mendaftarkan nomor telepon. Silakan coba lagi.\n', error);
+        console.error('❌Gagal mendaftarkan nomor telepon. Silakan coba lagi.\n', error);
         await askForOTP(conn, registration);
     }
 }
@@ -238,11 +238,11 @@ export const printQRIfNecessaryListener = (ev, logger) => {
 export async function sessionCheck(pathSession, pathRespald, onBot) {
     if (!fs.existsSync(pathSession)) {
         fs.mkdirSync(pathSession);
-        console.log(`Direktori ${pathSession} berhasil dibuat`);
+        console.log(`Direktori ${pathSession} berhasil dibuat✅`);
     }
     if (!fs.existsSync(pathRespald)) {
         fs.mkdirSync(pathRespald);
-        console.log(`Direktori ${pathRespald} berhasil dibuat`);
+        console.log(`Direktori ${pathRespald} berhasil dibuat✅`);
     }
     const readBotPath = fs.readdirSync(pathSession)
     const readBotDirBackup = fs.readdirSync(pathRespald)
