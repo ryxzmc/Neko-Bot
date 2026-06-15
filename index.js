@@ -143,7 +143,7 @@ print('Baileys', `v${require('./package.json').dependencies.baileys}`);
 print('Date & Time', new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta', hour12: false }));
 console.log(chalk.green.bold('╚' + ('═'.repeat(30))));
 
-async function startNazeBot() {
+async function startNekoBot() {
 	try {
 		const loadData = await database.read()
 		const storeLoadData = await storeDB.read()
@@ -197,7 +197,7 @@ async function startNazeBot() {
 	
 	const level = pino({ level: 'silent' });
 	const { version } = await fetchLatestWaWebVersion();
-	if (pairingCode && !phoneNumber && !fs.existsSync('./nazedev/creds.json')) {
+	if (pairingCode && !phoneNumber && !fs.existsSync('./ryxzmd/creds.json')) {
 		fs.rmSync('./nazedev', { recursive: true, force: true });
 		async function getPhoneNumber() {
 			phoneNumber = global.number_bot ? global.number_bot : process.env.BOT_NUMBER || await question('Please type your WhatsApp number : ');
@@ -210,14 +210,14 @@ async function startNazeBot() {
 		await getPhoneNumber();
 		console.log('Phone number captured. Waiting for Connection...\n' + chalk.blueBright('Estimated time: around 2 ~ 5 minutes'));
 	}
-	const { state, saveCreds } = await useMultiFileAuthState('nazedev');
+	const { state, saveCreds } = await useMultiFileAuthState('ryxzmd');
 	const getMessage = async (key) => {
 		if (global.store) {
 			const msg = await global.loadMessage(key.remoteJid, key.id);
 			return msg?.message || ''
 		}
 		return {
-			conversation: 'Halo Saya Naze Bot'
+			conversation: 'Halo Saya Neko-Bot'
 		}
 	}
 	
@@ -249,11 +249,11 @@ async function startNazeBot() {
 		},
 	});
 	
-	await Solving(naze, global.store)
+	await Solving(ryxz, global.store)
 	
-	naze.ev.on('creds.update', saveCreds)
+	ryxz.ev.on('creds.update', saveCreds)
 	
-	naze.ev.on('connection.update', async (update) => {
+	ryxz.ev.on('connection.update', async (update) => {
 		const { qr, connection, lastDisconnect, isNewLogin, receivedPendingNotifications } = update;
 		if ((connection === 'connecting' || !!qr) && pairingCode && phoneNumber && !naze.authState.creds.registered && !pairingStarted) {
 			pairingStarted = true;
@@ -273,19 +273,19 @@ async function startNazeBot() {
 			const reason = new Boom(lastDisconnect?.error)?.output.statusCode
 			if (reason === DisconnectReason.connectionLost) {
 				console.log('Connection to Server Lost, Attempting to Reconnect...');
-				startNazeBot()
+				startNekoBot()
 			} else if (reason === DisconnectReason.connectionClosed) {
 				console.log('Connection closed, Attempting to Reconnect...');
-				startNazeBot()
+				startNekoBot()
 			} else if (reason === DisconnectReason.restartRequired) {
 				console.log('Restart Required...');
-				startNazeBot()
+				startNekoBot()
 			} else if (reason === DisconnectReason.timedOut) {
 				console.log('Connection Timed Out, Attempting to Reconnect...');
-				startNazeBot()
+				startNekoBot()
 			} else if (reason === DisconnectReason.badSession) {
 				console.log('Delete Session and Scan again...');
-				startNazeBot()
+				startNekoBot()
 			} else if (reason === DisconnectReason.connectionReplaced) {
 				console.log('Close current Session first...');
 			} else if (reason === DisconnectReason.loggedOut) {
@@ -301,15 +301,15 @@ async function startNazeBot() {
 				fs.rmSync('./nazedev', { recursive: true, force: true });
 				process.exit(0)
 			} else {
-				naze.end(`Unknown DisconnectReason : ${reason}|${connection}`)
+				neko.end(`Unknown DisconnectReason : ${reason}|${connection}`)
 			}
 		}
 		if (connection == 'open') {
-			console.log('Connected to : ' + JSON.stringify(naze.user, null, 2));
-			let botNumber = await naze.decodeJid(naze.user.id);
+			console.log('Connected to : ' + JSON.stringify(neko.user, null, 2));
+			let botNumber = await neko.decodeJid(neko.user.id);
 			if (global.db?.set[botNumber] && !global.db?.set[botNumber]?.join) {
 				if (my.ch.length > 0 && my.ch.includes('@newsletter')) {
-					if (my.ch) await naze.newsletterMsg(my.ch, { type: 'follow' }).catch(e => {})
+					if (my.ch) await neko.newsletterMsg(my.ch, { type: 'follow' }).catch(e => {})
 					db.set[botNumber].join = true
 				}
 			}
@@ -320,32 +320,32 @@ async function startNazeBot() {
 		if (isNewLogin) console.log(chalk.green('[INFO] New device login detected...'))
 		if (receivedPendingNotifications == 'true') {
 			console.log(chalk.green('[INFO] Please wait About 1 Minute...'))
-			naze.ev.flush()
+			neko.ev.flush()
 		}
 	});
 	
-	naze.ev.on('call', async (call) => {
-		let botNumber = await naze.decodeJid(naze.user.id);
+	neko.ev.on('call', async (call) => {
+		let botNumber = await neko.decodeJid(neko.user.id);
 		if (global.db?.set[botNumber]?.anticall) {
 			for (let id of call) {
 				if (id.status === 'offer') {
 					let msg = await naze.sendMessage(id.from, { text: `Saat Ini, Kami Tidak Dapat Menerima Panggilan ${id.isVideo ? 'Video' : 'Suara'}.\nJika @${id.from.split('@')[0]} Memerlukan Bantuan, Silakan Hubungi Owner :)`, mentions: [id.from]});
-					await naze.sendContact(id.from, global.owner, msg);
-					await naze.rejectCall(id.id, id.from)
+					await neko.sendContact(id.from, global.owner, msg);
+					await neko.rejectCall(id.id, id.from)
 				}
 			}
 		}
 	});
 	
-	naze.ev.on('messages.upsert', async (message) => {
-		await MessagesUpsert(naze, message, global.store);
+	neko.ev.on('messages.upsert', async (message) => {
+		await MessagesUpsert(neko, message, global.store);
 	});
 	
-	naze.ev.on('group-participants.update', async (update) => {
-		await GroupParticipantsUpdate(naze, update, global.store);
+	neko.ev.on('group-participants.update', async (update) => {
+		await GroupParticipantsUpdate(neko, update, global.store);
 	});
 	
-	naze.ev.on('groups.update', (update) => {
+	neko.ev.on('groups.update', (update) => {
 		for (const n of update) {
 			if (global.store.groupMetadata[n.id]) {
 				Object.assign(global.store.groupMetadata[n.id], n);
@@ -364,7 +364,7 @@ async function startNazeBot() {
 		cmdDel(global.db.hit);
 		console.log(chalk.cyan('[INFO] Reseted Limit Users'));
 		let user = Object.keys(global.db.users)
-		let botNumber = await naze.decodeJid(naze.user.id);
+		let botNumber = await neko.decodeJid(neko.user.id);
 		for (let jid of user) {
 			const limitUser = global.db.users[jid].vip ? global.limit.vip : checkStatus(jid, global.db.premium) ? global.limit.premium : global.limit.free
 			if (global.db.users[jid].limit < limitUser) global.db.users[jid].limit = limitUser
@@ -415,20 +415,20 @@ async function startNazeBot() {
 	
 	if (!global._dbPresence) {
 		if (global?.db?.premium) checkExpired(global.db.premium);
-		if (global?.db?.sewa && naze?.user?.id) checkExpired(global.db.sewa, naze);
+		if (global?.db?.sewa && neko?.user?.id) checkExpired(global.db.sewa, neko);
 		global._dbPresence = setInterval(async () => {
-			if (naze?.user?.id) await naze.sendPresenceUpdate('available', naze.decodeJid(naze.user.id)).catch(e => {});
+			if (neko?.user?.id) await neko.sendPresenceUpdate('available', neko.decodeJid(neko.user.id)).catch(e => {});
 		}, 60 * 60 * 1000);
 	}
 
-	if (!setupServer && database && naze) {
-		setupServer = await setupDashboard(database, storeDB, naze);
+	if (!setupServer && database && neko) {
+		setupServer = await setupDashboard(database, storeDB, neko);
 	}
 
-	return naze
+	return neko
 }
 
-startNazeBot()
+startNekoBot()
 
 const cleanup = async (signal) => {
 	console.log(chalk.greenBright(`[SYSTEM] Received ${signal}. Menyimpan database...`));
