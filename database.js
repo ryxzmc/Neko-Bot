@@ -18,7 +18,7 @@ class MongoDB {
 		mongoose.connection.on('disconnected', async () => {
 			if (this.isReconnecting) return
 			this.isReconnecting = true
-			console.warn('❗ MongoDB connection lost. Attempting to reconnect in 5 seconds...');
+			console.warn('❗ MongoDB connection lost. Trying to reconnect in 5 seconds.....');
 			await new Promise(resolve => setTimeout(resolve, 5000));
 			await this.connect();
 		});
