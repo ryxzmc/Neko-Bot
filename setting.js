@@ -7,20 +7,60 @@ const __filename = fileURLToPath(import.meta.url);
 
 /*
 	* Create By Ryxz
-	* Follow https://github.com/ryxzmc
+	* 
 	* 
 */
 
 //~~~~~~~~~~~~< GLOBAL SETTINGS >~~~~~~~~~~~~\\
 
-global.owner = ["62xxxxxxx"] // ['628','628'] 2 owner atau lebih
-global.author = 'ryxzmc'
+global.owner = ["62xxxxxxx"]  // Gunakan nomor WhatsApp kalian
+global.author = 'Ryxz'
 global.botname = 'Neko-Bot'
-global.packname = 'Bot_Wa'
-global.timezone = 'Asia/Jakarta' // Ganti pakai command .settimezone
-global.locale = 'en' // Ganti pakai command .setlocale
+global.packname = 'Bot-Md'
+global.timezone = ''
+global.locale = ''
 global.listprefix = ["+","!","."]
-global.defaultAdminKey = crypto.randomBytes(5).toString("hex");
+
+import { fileURLToPath } from 'url'
+import path from 'path'
+import fs from 'fs'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+export default {
+    name: 'NEKO-ADMIN-69X',
+    alias: ['setak'],
+    desc: 'Neko_0WNER_KEY. Ex:.setadminkey ROOT_NEKOBOT_ACCES',
+    owner: true,
+    async execute(sock, m, args) {
+        if (!args[0]) return m.reply('Format:.Ryxz_Neko_Activated\nROOT_NEKOBOT_ADMIN_ACCES')
+
+        let key = args.join(' ')
+        let settingPath = path.join(__dirname, '../../setting.js')
+
+        let setting = fs.readFileSync(settingPath, 'utf8')
+        setting = setting.replace(/global\.defaultAdminKey\s*=\s*['"`].*?['"`]/, `global.defaultAdminKey = '${key}'`)
+        fs.writeFileSync(settingPath, setting)
+        global.defaultAdminKey = key
+
+        m.reply(`✅ Admin Key diganti!\nKey: *${key}*)
+    }
+}'
+
+
+global.my = {
+	yt: "https://",
+	web: 'https://ryxzmc.vercel.app
+	tele: 't.me/RyxzMC',
+	email: "ryxzmd24@gmail.com"
+	
+// TAMBAHIN SENDIRI DI SINI	
+global.webname = ''
+global.ig = ''
+global.email = ''
+global.sc = ''
+global.yt = ''
 
 global.listv = ['•','●','■','✿','▲','➩','➢','➣','➤','✦','✧','△','❀','○','□','♤','♡','◇','♧','々','〆']
 global.tempatDB = 'database.json' // Taruh url mongodb di sini jika menggunakan mongodb. Format : 'mongodb+srv://...'
@@ -75,12 +115,12 @@ global.mess = {
 }
 
 global.APIs = {
-	naze: 'https://api.naze.biz.id',
-	neosantara: 'https://api.neosantara.xyz/v1',
+	ryxz: 'https://api.ryxz.dev.id',
+	NekoBot: 'https://api.nekobot.xyz/6969',
 }
 global.APIKeys = {
-	'https://api.naze.biz.id': 'nz-298327ff62',
-	'https://api.neosantara.xyz/v1': 'API_KEY_NEOSANTARA_AI',
+	'https://api.ryxz.dev.id': 'nr-346227rnf61',
+	'https://api.nekobot.xyz/6969': 'ROOT_NEKOBOT_ACCES_1337',
 }
 
 // Lainnya
