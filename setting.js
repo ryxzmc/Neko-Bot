@@ -1,26 +1,26 @@
 import fs from 'fs';
 
-global.owner = ["6283141292575"]
+global.owner = ["6287894179931"]
 global.botname = 'Neko-Bot'
 global.author = 'RyxzDesu'
-global.packname = 'Neko-Bot by Ryxz'
-global.number_bot = '6283141292575'
+global.packname = 'Neko-Bot | © Created by RyxzXcode'
+global.number_bot = '6287894179931'
 
-global.webname = 'Neko-Bot Official'
+global.webname = 'ShirokoDesu'
 global.website = 'https://ryxzmc.vercel.app'
 global.sc = 'https://github.com/ryxzmc/Neko-Bot'
 global.email = 'ryxzmd24@gmail.com'
-global.yt = 'https://youtube.com/@RyxzOfficial'
-global.ig = 'https://instagram.com/shirokodesu.store'
+global.yt = 'https://youtube.com/@RyxzMC'
+global.ig = 'https://www.instagram.com/ryxz_mc24'
 
 global.pairing_code = true
 global.timezone = 'Asia/Makassar'
 global.tempatDB = 'database.json'
 
 global.mess = {
-  owner: "Khusus Owner!",
-  group: "Khusus Grup!",
-  wait: "Sedang diproses...",
+  owner: "Maaf ya, ini khusus Owner😊!",
+  group: "Duhhh maaf kak, ini khusus grup!",
+  wait: "Tunggu ya,kami Sedang proses...",
   done: "Selesai!"
 }
 
