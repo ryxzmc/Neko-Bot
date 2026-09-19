@@ -1,6 +1,5 @@
-import fs from 'fs';
-
-global.owner = [["https//wa.me/6283141292575","Ryxz",true]]
+// SETTING NEKO-BOT. © Created By RyxzXcode 
+global.owner = [["https://wa.me/6283141292575","RyxzDesu",true]]
 global.mods = []
 global.pairingNumber = "6287894179931"
 
@@ -16,23 +15,23 @@ global.email = 'ryxzmd24@gmail.com'
 
 global.timezone = 'Asia/Makassar'
 global.tempatDB = 'database.json'
-global.tempatStore = 'baileys_store.json'
 
 global.fake = {
-  thumbnailUrl: 'https://telegra.ph/file/fe4843a1261fc414542c4.jpg',
+  thumbnailUrl: 'https://raw.githubusercontent.com/himanackerman/Image/main/1767877404043-832.jpeg',
 }
 
 global.my = {
   gh: "https://github.com/ryxzmc",
-  ig: "https://www.instagram.com/ryxz_mc24",
+  ig: "",
   tg: "t.me/RyxzMC",
   ch: "https://whatsapp.com/channel/0029Vb8K2AJHgZWmrFZr5Z06"
 }
 
-global.limit = { free: 20, premium: 999, vip: 900 }
 global.mess = {
-  owner: "Maaf yaa🤧, ini Khusus Owner aja!",
-  group: "Maaf yaa☺️, ini Khusus Grup!",
-  wait: "Tunggu bentar, kami Sedang Proses...",
-  done: "Selesai✅!"
+  owner: 'Maaf yaa🤧, ini Khusus Owner!',
+  group: 'Maaf yaa🙏☺️, ini Khusus Grup!',
+  wait: 'Tunggu sebentar...',
+  done: 'Done✅!'
 }
+
+global.limit = { free: 20, premium: 999, vip: 900 }
